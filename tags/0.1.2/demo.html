@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="jquery.geo.min.js"></script>
+</head>
+<body>
+	<p>Your Position is: <span id="pos">(<span id="lat">Unknown</span>, <span id="lng">Unknown</span>)</span></p>
+
+	<script>
+		$.geo()
+			.done(function (pos) {
+				$('#lat').text(pos.lat);
+				$('#lng').text(pos.lng);
+			})
+			.fail(function (error) {
+				var code;
+				switch(error.code) {
+					case error.PERMISSION_DENIED:
+						code = 'Permissions Denied';
+						break;
+
+					case error.POSITION_UNAVAILABLE:
+						code = 'Position Unavalible';
+						break;
+
+					case error.TIMEOUT:
+						code = 'Timeout';
+						break;
+
+					default:
+						code = 'Unknown';
+						break;
+				}
+				$('#pos').text('Error: '+code);
+			});
+	</script>
+</body>
+</html>

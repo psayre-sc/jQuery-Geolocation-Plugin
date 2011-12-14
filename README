@@ -1,0 +1,28 @@
+jQuery Geolocation Plugin
+
+Version: 0.1.2
+Created: 2011-12-12
+Updated: 2011-12-14
+ 
+Company: SiteCrafting
+Website: https://github.com/psayre-sc/jQuery-Geolocation-Plugin
+Authors: Paul Sayre
+
+
+Basic Usage:
+
+$.geo().done(function (pos) {
+  var lat = pos.lat, lng = pos.lng;
+});
+
+
+Advanced Usage:
+
+$.geo({
+  failToGoogle: false,
+  enableHighAccuracy: true
+}).done(function (pos){
+  var lat = pos.lat lng = pos.lng, accr = pos.accr;
+}).fail(function () {
+  alert('Could not determine position');
+});
